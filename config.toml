@@ -1,7 +1,7 @@
 ##########################################
 # 站点配置
 
-baseURL = "https://example.com/"
+baseURL = "http://eboher.im/"
 title = "Eboher"
 languageCode = "zh-CN"
 hasCJKLanguage = true
@@ -93,17 +93,17 @@ uglyURLs = false
 # 作者信息
 [author]
     # 名字
-    name = "reuixiy"
+    name = "Eboher"
     # 邮箱
-    email = "reuixiy@gmail.com"
+    email = "cosby5288@gmail.com"
     # 座右铭或简介
-    motto = "Viva La Vida"
+    motto = ""
     # 头像
     avatar = "/icons/apple-touch-icon.png"
     # 网站（默认值：baseURL）
-    website = "https://io-oi.me/"
+    website = "http://eboher.im/"
     # 推特
-    twitter = "reuixiy"
+    twitter = ""
 
 # 相关文章
 [related]
@@ -183,32 +183,25 @@ uglyURLs = false
     #     pre = "internal"
     #     post = "home"
     [[menu.main]]
-        url = "/posts/"
-        name = "文章"
+        url = "/tech/"
+        name = "技术"
         weight = 2
         pre = "internal"
-    #[[menu.main]]
-    #    url = "/categories/"
-    #    name = "分类"
-    #    weight = 3
-    #    pre = "internal"
-    #    post = "th"
-    #[[menu.main]]
-    #    url = "/tags/"
-    #    name = "标签"
-    #    weight = 4
-    #    pre = "internal"
-    #    post = "tags"
+    [[menu.main]]
+        url = "/life/"
+        name = "生活"
+        weight = 3
+        pre = "internal"
     #[[menu.main]]
     #    url = "/about/"
     #    name = "关于"
-    #    weight = 5
+    #    weight = 4
     #    pre = "internal"
     [[menu.main]]
-        weight = 6
+        weight = 5
         identifier = "theme-switcher"
     [[menu.main]]
-        weight = 7
+        weight = 6
         identifier = "lang-switcher"
 
 
@@ -918,7 +911,7 @@ uglyURLs = false
     enableParagraphIndent = true
 
     # 是否缩进第一段（全局设置）
-    indentFirstParagraph = false
+    indentFirstParagraph = true
     # 说明：文章的 Front Matter 中的 `indentFirstParagraph`
     #      的优先级高于此处
 
@@ -1153,23 +1146,23 @@ uglyURLs = false
     # 页脚
 
     # 是否开启
-    enableFooter = false
+    enableFooter = true
 
     # 是否在首页显示
-    displayFooterInHome = false
+    displayFooterInHome = true
 
     # 是否显示版权符号（©）
-    displayCopyrightSymbol = false
+    displayCopyrightSymbol = true
 
     # 是否显示站点的创建年份
-    displaySiteCreatedYear = false
+    displaySiteCreatedYear = true
 
     # 年份与作者之间的图标，留空（""）则无
-    iconBetweenYearAndAuthor = "heart"
+    iconBetweenYearAndAuthor = "tui"
     # 图标颜色
-    iconColor = "#f06292"
+    iconColor = "#000000"
     # 是否开启图标的跳动效果
-    iconAnimation = true
+    iconAnimation = false
 
     # 是否显示 Hugo 和 MemE 的链接
     displayPoweredBy = false
