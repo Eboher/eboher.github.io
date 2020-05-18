@@ -2,9 +2,9 @@
 
 
 <feed xmlns="http://www.w3.org/2005/Atom" xml:lang="zh-CN">
-    <title type="text">Hugo 主题 MemE</title>
-    <subtitle type="html">MemE 是一个强大且可高度定制的 GoHugo 博客主题，专为个人博客设计。</subtitle>
-    <updated>2020-05-18T16:00:32&#43;08:00</updated>
+    <title type="text">Eboher</title>
+    <subtitle type="html">Eboher&#39;s website</subtitle>
+    <updated>2020-05-18T16:49:48&#43;08:00</updated>
     <id>https://example.com/</id>
     <link rel="alternate" type="text/html" href="https://example.com/" />
     <link rel="self" type="application/atom&#43;xml" href="https://example.com/atom.xml" />
@@ -16,6 +16,322 @@
             </author>
     <rights>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</rights>
     <generator uri="https://gohugo.io/" version="0.70.0">Hugo</generator>
+        <entry>
+            <title type="text">网页呈现的过程</title>
+            <link rel="alternate" type="text/html" href="https://example.com/posts/jayden/" />
+            <id>https://example.com/posts/jayden/</id>
+            <updated>2020-05-18T16:48:05&#43;08:00</updated>
+            <published>2020-05-18T16:46:32&#43;08:00</published>
+            <author>
+                    <name>reuixiy</name>
+                    <uri>https://io-oi.me/</uri>
+                    <email>reuixiy@gmail.com</email>
+                    </author>
+            <rights>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</rights><summary type="html">网页呈现的过程 从用户输入浏览器输入url到页面最后呈现有哪些过程？ 总体说来分为以下几……
+    
+    </summary>
+            
+                <content type="html">&lt;h1 id=&#34;网页呈现的过程&#34;&gt;网页呈现的过程&lt;/h1&gt;
+&lt;p&gt;从用户输入浏览器输入url到页面最后呈现有哪些过程？
+总体说来分为以下几个过程：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;DNS解析&lt;/li&gt;
+&lt;li&gt;TCP连接&lt;/li&gt;
+&lt;li&gt;发送HTTP请求&lt;/li&gt;
+&lt;li&gt;服务器处理请求并返回HTTP报文&lt;/li&gt;
+&lt;li&gt;浏览器解析渲染页面&lt;/li&gt;
+&lt;li&gt;连接结束&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;下面就对这些步骤进行详细的分析。&lt;/p&gt;
+&lt;h2 id=&#34;dns解析&#34;&gt;DNS解析&lt;/h2&gt;
+&lt;p&gt;DNS（Domain Name System），即域名系统，是互联网上作为&lt;strong&gt;域名和IP地址相互映射&lt;/strong&gt;的一个&lt;strong&gt;分布式数据库&lt;/strong&gt;。DNS能够使用户更方便的访问互联网，而不用去记住能够被机器直接读取的IP地址。通过域名，最终得到该域名对应的IP地址的过程叫做域名解析。&lt;/p&gt;
+&lt;h3 id=&#34;解析过程&#34;&gt;解析过程&lt;/h3&gt;
+&lt;p&gt;当用户在浏览器中输入域名并按下回车键后为了增加访问效率，计算机有域名缓存机制，当访问过某个网站并得到其IP后，会将其域名和IP缓存下来，下一次访问的时候，就不需要再请求域名服务器获取IP，直接使用缓存中的IP。
+查找顺序：&lt;strong&gt;浏览器缓存 =&amp;gt; 操作系统缓存 =&amp;gt; 本地host文件 =&amp;gt; 路由器缓存 =&amp;gt; ISP DNS缓存 =&amp;gt; 顶级DNS服务器/根服务器。&lt;/strong&gt;
+在所有缓存中均没有IP地址时，则会开始进行查询过程。&lt;/p&gt;
+&lt;h3 id=&#34;查询过程&#34;&gt;查询过程&lt;/h3&gt;
+&lt;h4 id=&#34;递归查询优先&#34;&gt;递归查询(优先)&lt;/h4&gt;
+&lt;p&gt;递归查询是客户端解析器发送请求到本地DNS服务器，本地DNS服务器负责完成查询并提供完整响应。
+&lt;img src=&#34;https://cdn.nlark.com/yuque/0/2019/png/273282/1557913334363-b2ed321b-a96d-41f1-af90-d0c581768374.png#align=left&amp;amp;display=inline&amp;amp;height=99&amp;amp;originHeight=99&amp;amp;originWidth=563&amp;amp;size=0&amp;amp;status=done&amp;amp;width=563&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;h4 id=&#34;迭代查询&#34;&gt;迭代查询&lt;/h4&gt;
+&lt;p&gt;迭代查询是请求发送到服务器，如果服务器不能匹配请求，将提供另一个负责解析这个域名空间的服务器，客户端将查询请求重新发送到这个新的DNS服务器上。
+&lt;img src=&#34;https://cdn.nlark.com/yuque/0/2019/png/273282/1557913356200-b94737d0-a1fc-4261-8a53-3b16326d0c02.png#align=left&amp;amp;display=inline&amp;amp;height=249&amp;amp;originHeight=332&amp;amp;originWidth=429&amp;amp;size=0&amp;amp;status=done&amp;amp;width=322&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;h3 id=&#34;dns负载均衡&#34;&gt;DNS负载均衡&lt;/h3&gt;
+&lt;p&gt;当一个网站有足够多的用户的时候，假如每次请求的资源都位于同一台机器上面，那么这台机器可能因访问量过大而挂掉服务。可以利用DNS负载均衡技术进行分流，它的原理是在&lt;strong&gt;DNS服务器中为同一个主机名配置多个IP地址&lt;/strong&gt;，在应答DNS查询时，DNS服务器对每个查询将以DNS文件中主机记录的IP地址按算法返回不同的解析结果，将客户端的访问引导到不同的机器上去，使得不同的客户端访问不同的服务器，从而达到负载均衡的目的。例如可以根据每台机器的负载量，该机器离用户地理位置的距离等等。&lt;/p&gt;
+&lt;h3 id=&#34;dns优化&#34;&gt;DNS优化&lt;/h3&gt;
+&lt;p&gt;CDN域名与主站域名不同，DNS解析CDN域名还需要花费额外的时间，增加网络延迟。DNS Prefetch是一种DNS预解析技术，当我们浏览网页时，浏览器会在加载网页时对网页中的域名进行预解析并缓存，这样在浏览器加载网页中的链接时，就无需进行DNS解析，减少用户的等待时间，提高用户体验。DNS Prefetch现已被主流浏览器支持，大多数浏览器针对DNS解析都进行了优化，典型的一次DNS解析会耗费20~120ms，减少DNS解析时间和次数是个很好的优化措施。使用格式如下：
+&lt;img src=&#34;https://cdn.nlark.com/yuque/0/2019/png/273282/1558017246953-21786034-ce66-40f0-9b82-58e5533be038.png#align=left&amp;amp;display=inline&amp;amp;height=98&amp;amp;name=image.png&amp;amp;originHeight=98&amp;amp;originWidth=420&amp;amp;size=95806&amp;amp;status=done&amp;amp;width=420&#34; alt=&#34;image.png&#34;&gt;简单讲是HTTP的安全版，即HTTP下加入SSL层，&lt;/p&gt;
+&lt;h2 id=&#34;tcp连接&#34;&gt;TCP连接&lt;/h2&gt;
+&lt;p&gt;拿到域名对应的IP地址之后，浏览器会以一个随机端口（1024&amp;lt;端口&amp;lt;65535）向服务器的WEB程序（如nginx等）的80端口发起TCP的连接请求。这个连接请求到达服务器端后（这中间通过各种路由设备，局域网内除外），进入到网卡，然后是进入到内核的TCP/IP协议栈（用于识别该连接请求，解封包），还有可能要经过防火墙（属于内核的模块）的过滤，最终到达WEB程序，建立了TCP/IP的连接。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;TCP 提供一种&lt;strong&gt;面向连接的、可靠的&lt;/strong&gt;字节流服务&lt;/li&gt;
+&lt;li&gt;在一个 TCP 连接中，仅有两方进行彼此通信。广播和多播不能用于 TCP&lt;/li&gt;
+&lt;li&gt;TCP 使用&lt;strong&gt;校验和，确认和重传机制&lt;/strong&gt;来保证可靠传输&lt;/li&gt;
+&lt;li&gt;TCP 给数据分节进行排序，并使用累积确认保证数据的顺序不变和非重复&lt;/li&gt;
+&lt;li&gt;TCP 使用滑动窗口机制来实现流量控制，通过动态改变窗口的大小进行拥塞控制&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;TCP 并不能保证数据一定会被对方接收到，因为这是不可能的。TCP 能够做到的是，如果有可能，就把数据递送到接收方，否则就（通过放弃重传并且中断连接这一手段）通知用户。因此准确说 TCP 也不是 100% 可靠的协议，它所能提供的是&lt;strong&gt;数据的可靠递送或故障的可靠通知&lt;/strong&gt;。TCP通信流程如下：
+&lt;img src=&#34;https://cdn.nlark.com/yuque/0/2019/jpeg/273282/1557968723945-4def0ed9-0c55-42bc-a039-8072d1b1311f.jpeg#align=left&amp;amp;display=inline&amp;amp;height=391&amp;amp;originHeight=781&amp;amp;originWidth=700&amp;amp;size=0&amp;amp;status=done&amp;amp;width=350&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;h3 id=&#34;三次握手&#34;&gt;三次握手&lt;/h3&gt;
+&lt;p&gt;所谓三次握手，是指建立一个 TCP 连接时，需要客户端和服务器进行三次对话。三次握手的机制是为了保证信息传输的可靠性，如果其中某个握手失败了，这个过程将会重复。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;第一次握手：客户端发送连接请求，置SYN标志位为1，随机生成序列号X。然后，客户端进入&lt;code&gt;SYN_SEND&lt;/code&gt;状态，等待服务器的确认。&lt;/li&gt;
+&lt;li&gt;第二次握手：服务端回应确认包。置SYN标志位为1，置ACK为X+1，将初始序列号Y，保存在包头的序列号里。发送完毕后，服务器进入&lt;code&gt;SYN_RCVD&lt;/code&gt;状态。&lt;/li&gt;
+&lt;li&gt;第三次握手：客户端再次发送确认包。置SYN标志位为0，置ACK为Y+1，置序列号为Z。发送完毕后，客户端进入 &lt;code&gt;ESTABLISHED &lt;/code&gt;状态，当服务器端接收到这个包时，也进入&lt;code&gt;ESTABLISHED &lt;/code&gt;状态，TCP 握手结束。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;四次挥手&#34;&gt;四次挥手&lt;/h3&gt;
+&lt;p&gt;TCP 的连接的拆除需要四次对话，客户端或服务器均可主动发起挥手动作。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;第一次挥手：主机1（可以是客户端，也可以是服务器端），设置seq 和 ACK，向主机2发送一个 FIN 报文段；&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;此时，主机1进入 &lt;code&gt;FIN_WAIT_1 &lt;/code&gt;状态；这表示主机1没有数据要发送给主机2了；&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;第二次挥手：主机2收到了主机1发送的 FIN 报文段，向主机1回一个 ACK 报文段，ACK 为seq+1；主机1进入 &lt;code&gt;FIN_WAIT_2 &lt;/code&gt;状态；主机2告诉主机1，我“同意”你的关闭请求；&lt;/li&gt;
+&lt;li&gt;第三次挥手：主机2向主机1发送 FIN 报文段，请求关闭连接;同时主机2进入 &lt;code&gt;LAST_ACK &lt;/code&gt;状态；&lt;/li&gt;
+&lt;li&gt;第四次挥手：主机1收到主机2发送的 FIN 报文段，向主机2发送 ACK 报文段，然后主机1进入 &lt;code&gt;TIME_WAIT &lt;/code&gt;状态；主机2收到主机1的 ACK 报文段以后，就关闭连接；此时，主机1等待 2MSL 后依然没有收到回复，则证明 Server 端已正常关闭，那好，主机1也可以关闭连接了。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;TCP 协议是一种面向连接的、可靠的、基于字节流的运输层通信协议。TCP 是全双工模式，这就意味着，当主机1发出 FIN 报文段时，只是表示主机1已经没有数据要发送了，主机1告诉主机2，它的数据已经全部发送完毕了；但是，这个时候主机1还是可以接受来自主机2的数据；当主机2返回 ACK 报文段时，表示它已经知道主机1没有数据发送了，但是主机2还是可以发送数据到主机1的；当主机2也发送了 FIN 报文段时，这个时候就表示主机2也没有数据要发送了，就会告诉主机1，我也没有数据要发送了，之后彼此就会愉快的中断这次 TCP 连接。&lt;/p&gt;
+&lt;h3 id=&#34;syn攻击&#34;&gt;SYN攻击&lt;/h3&gt;
+&lt;p&gt;在三次握手过程中，服务器发送 SYN-ACK 之后，收到客户端的 ACK 之前的 TCP 连接称为半连接。此时服务器处于 &lt;code&gt;SYN_RCVD&lt;/code&gt;状态。当收到 ACK 后，服务器才能转入 &lt;code&gt;ESTABLISHED &lt;/code&gt;状态。
+SYN 攻击指的是，攻击客户端在短时间内伪造大量不存在的IP地址，向服务器不断地发送SYN包，服务器回复确认包，并等待客户的确认。由于源地址是不存在的，服务器需要不断的重发直至超时，这些伪造的SYN包将长时间占用未连接队列，正常的SYN请求被丢弃，导致目标系统运行缓慢，严重者会引起网络堵塞甚至系统瘫痪。SYN 攻击是一种典型的 DoS/DDoS 攻击。
+SYN攻击不能完全被阻止，除非将TCP协议重新设计。我们所做的是尽可能的减轻SYN攻击的危害，常见的防御 SYN 攻击的方法有如下几种：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;缩短超时（SYN Timeout）时间&lt;/li&gt;
+&lt;li&gt;增加最大半连接数&lt;/li&gt;
+&lt;li&gt;过滤网关防护&lt;/li&gt;
+&lt;li&gt;SYN cookies技术&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;http&#34;&gt;HTTP&lt;/h2&gt;
+&lt;h3 id=&#34;http请求&#34;&gt;HTTP请求&lt;/h3&gt;
+&lt;p&gt;HTTP 协议构建于 TCP/IP 协议之上，是一个应用层协议，默认端口号是 80。HTTP 是无连接&lt;strong&gt;无状态&lt;/strong&gt;的。HTTP 协议是以 ASCII 码传输，建立在 TCP/IP 协议之上的应用层规范。规范把 HTTP 请求分为三个部分：状态行、请求头、消息主体。
+HTTP 定义了与服务器交互的不同方法，最基本的方法有4种，分别是&lt;code&gt;GET&lt;/code&gt;，&lt;code&gt;POST&lt;/code&gt;，&lt;code&gt;PUT&lt;/code&gt;，&lt;code&gt;DELETE&lt;/code&gt;。&lt;/p&gt;
+&lt;h4 id=&#34;post提交数据的方式&#34;&gt;POST提交数据的方式&lt;/h4&gt;
+&lt;p&gt;HTTP 协议中规定 POST 提交的数据必须在 body 部分中，但是协议中没有规定数据使用哪种编码方式或者数据格式。
+Content-Type 字段来获知请求中的消息主体是用何种方式编码，再对主体进行解析。所以说到 POST 提交数据方案，包含了 Content-Type 和消息主体编码方式两部分。常用的Content-Type有以下两种：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;application/x-www-form-urlencoded&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;这是最常见的 POST 数据提交方式。浏览器的原生 &lt;form&gt; 表单，如果不设置 enctype 属性，那么最终就会以 &lt;code&gt;application/x-www-form-urlencoded&lt;/code&gt; 方式提交数据。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;multipart/form-data&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;我们使用表单&lt;strong&gt;上传文件时&lt;/strong&gt;，必须让 &lt;form&gt; 表单的 enctype 等于 &lt;code&gt;multipart/form-data&lt;/code&gt;。
+上面提到的这两种 POST 数据的方式，都是浏览器原生支持的，而且现阶段标准中原生 &lt;form&gt; 表单也只支持这两种方式（通过 &lt;form&gt; 元素的 enctype 属性指定，默认为 application/x-www-form-urlencoded）。当然，也可以使用其他的数据提交方式，例如&lt;strong&gt;&lt;code&gt;application/json&lt;/code&gt;&lt;/strong&gt;(默认的提交方式用&amp;amp;将键值进行拼接，参数是复杂的JSON对象时，一般使用这种方式)，&lt;code&gt;text/xml&lt;/code&gt;，乃至&lt;code&gt; application/x-protobuf&lt;/code&gt; 这种二进制格式，只要服务器可以根据 Content-Type 和 Content-Encoding 正确地解析出请求，都是没有问题的。&lt;/p&gt;
+&lt;h3 id=&#34;http响应&#34;&gt;HTTP响应&lt;/h3&gt;
+&lt;p&gt;HTTP 响应与 HTTP 请求相似，HTTP响应也由3个部分构成，分别是：状态行、响应头、响应正文。
+常见的状态码有如下几种：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;200 OK 客户端请求成功&lt;/li&gt;
+&lt;li&gt;301 Moved Permanently 请求永久重定向&lt;/li&gt;
+&lt;li&gt;302 Moved Temporarily 请求临时重定向&lt;/li&gt;
+&lt;li&gt;304 Not Modified 文件未修改，可以直接使用缓存的文件。&lt;/li&gt;
+&lt;li&gt;400 Bad Request 由于客户端请求有语法错误，不能被服务器所理解。&lt;/li&gt;
+&lt;li&gt;401 Unauthorized 请求未经授权。这个状态代码必须和WWW-Authenticate报头域一起使用&lt;/li&gt;
+&lt;li&gt;403 Forbidden 服务器收到请求，但是拒绝提供服务。服务器通常会在响应正文中给出不提供服务的原因&lt;/li&gt;
+&lt;li&gt;404 Not Found 请求的资源不存在，例如，输入了错误的URL&lt;/li&gt;
+&lt;li&gt;500 Internal Server Error 服务器发生不可预期的错误，导致无法完成客户端的请求。&lt;/li&gt;
+&lt;li&gt;502 Bad Gateway 是一种HTTP协议的服务器端错误状态代码，它表示作为网关或代理角色的服务器，从上游服务器（如tomcat、php-fpm）中接收到的响应是无效的。&lt;/li&gt;
+&lt;li&gt;503 Service Unavailable 服务器当前不能够处理客户端的请求，在一段时间之后，服务器可能会恢复正常。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;keep-alive&#34;&gt;keep-alive&lt;/h4&gt;
+&lt;p&gt;keep-alive 可以叫做持久连接（也叫长连接）。keep-alive 这个请求头只存在于 HTTP/1.0 版本中，在 HTTP/1.1 中所有&lt;strong&gt;连接默认都被保持&lt;/strong&gt;，如果加  &lt;code&gt;Connection:close&lt;/code&gt;才关闭。如果一个客户端经常访问服务器，那么创建、关闭 TCP 连接就耗费了大量的时间和资源，keep-alive 就可以解决这样的一个情况。
+怎么样创建一个keep-alive连接呢？&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;客户端在请求头需要加入 &lt;code&gt;Connection: keep-alive &lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;服务器接收到客户端的请求中有 keep-alive，若服务器支持 keep-alive，则在响应头中加入&lt;code&gt;Connection: keep-alive&lt;/code&gt;。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;这样，当客户端接收到响应并发现响应中有 keep-alive 则认为和服务器之间创建了一条 keep-alive 连接，也就是不关闭 TCP 连接，该连接会在接收到服务器或客户端发起的 closed 请求或超时，就会关闭。
+keep-alive 连接的一些注意点：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;keep-alive 需要更加小心的维护，因为一不小心，就会有大量空闲的 TCP 连接存在。&lt;/li&gt;
+&lt;li&gt;实体的主题部分必须有正确的 Content-Length，不然会不知道哪里是一条报文的结束、一条报文的开始。&lt;/li&gt;
+&lt;li&gt;keep-alive 不是默认使用的（ps：在 HTTP/1.1 中 presistent 是默认使用的）&lt;/li&gt;
+&lt;li&gt;响应没有 keep-alive，服务器发出响应后就会关闭连接。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;http劫持&#34;&gt;HTTP劫持&lt;/h3&gt;
+&lt;p&gt;http协议属于明文传输协议，交互过程以及数据传输都没有进行加密，通信双方也没有进行任何认证，通信过程非常容易遭遇劫持、监听、篡改，严重情况下，会造成恶意的流量劫持等问题，甚至造成个人隐私泄露（比如银行卡卡号和密码泄露）等严重的安全问题。
+可以把http通信比喻成寄送信件一样，A给B寄信，信件在寄送过程中，会经过很多的邮递员之手，他们可以拆开信读取里面的内容（因为http是明文传输的）。A的信件里面的任何内容（包括各类账号和密码）都会被轻易窃取。除此之外，邮递员们还可以伪造或者修改信件的内容，导致B接收到的信件内容是假的。
+比如常见的，在http通信过程中，“中间人”将广告链接嵌入到服务器发给用户的http报文里，导致用户界面出现很多不良链接； 或者是修改用户的请求头URL，导致用户的请求被劫持到另外一个网站，用户的请求永远到不了真正的服务器。这些都会导致用户得不到正确的服务，甚至是损失惨重。
+什么是HTTP劫持呢，大多数情况是运营商HTTP劫持，当我们使用HTTP请求请求一个网站页面的时候，网络运营商会在正常的数据流中插入精心设计的网络数据报文，让客户端（通常是浏览器）展示“错误”的数据，通常是一些弹窗，宣传性广告或者直接显示某网站的内容。&lt;/p&gt;
+&lt;h3 id=&#34;https协议&#34;&gt;HTTPS协议&lt;/h3&gt;
+&lt;p&gt;HTTP的数据传输是没有加密的，明文的，所以使用HTTP传输隐私信息非常不安全，为了解决这个问题，网景公司设计了SSL(安全套接字)协议用于对http传输的数据进行加密，从而就诞生了HTTPS。简单讲是HTTP的安全版，即HTTP下加入SSL层。
+HTTPS协议的主要作用可以分为两种：一种是建立一个信息安全通道，来保证数据传输的安全；另一种就是确认网站的真实性。&lt;/p&gt;
+&lt;h3 id=&#34;https如何保证安全&#34;&gt;https如何保证安全&lt;/h3&gt;
+&lt;p&gt;要解决http带来的问题，就要引入加密以及身份验证机制。
+如果服务器给客户端的消息是密文的，只有服务器和客户端才能读懂，就可以保证数据的保密性。同时，在交换数据之前，验证一下对方的合法身份，就可以保证通信双方的安全。那么，问题来了，服务器把数据加密后，客户端如何读懂这些数据呢？
+这时服务器必须要把加密的密钥告诉客户端，客户端才能利用对称密钥解开密文的内容。但是，服务器如果将这个对称密钥以明文的方式给客户端，还是会被中间人截获，中间人也会知道对称密钥，依然无法保证通信的保密性。但是，如果服务器以密文的方式将对称密钥发给客户端，客户端又如何解开这个密文，得到其中的对称密钥呢？
+这时，我们引入&lt;strong&gt;了非对称加解密&lt;/strong&gt;的概念。在非对称加解密算法里，公钥加密的数据，&lt;strong&gt;有且只有唯一的私钥才能够解密&lt;/strong&gt;，所以服务器只要把公钥发给客户端，客户端就可以用这个公钥来加密进行数据传输的对称密钥。客户端利用公钥将对称密钥发给服务器时，即使中间人截取了信息，也无法解密，因为私钥只部署在服务器，其他任何人都没有私钥，因此，只有服务器才能够解密。服务器拿到客户端的信息并用私钥解密之后，就可以拿到加解密数据用的对称密钥，通过这个对称密钥来进行后续通信的数据加解密。除此之外，非对称加密可以很好的管理对称密钥，&lt;strong&gt;保证每次数据加密的对称密钥都是不相同的&lt;/strong&gt;，这样子的话，即使客户端病毒拉取到通信缓存信息，也无法窃取正常通信内容。&lt;/p&gt;
+&lt;h4 id=&#34;中间人攻击&#34;&gt;中间人攻击&lt;/h4&gt;
+&lt;p&gt;但是这样似乎还不够，如果通信过程中，在三次握手或者客户端发起HTTP请求过程中，客户端的请求被中间人劫持，那么中间人就可以伪装成“假冒客户端”和服务器通信；中间人又可以伪装成“假冒服务器”和客户端通信。接下来，我们详细阐述中间人获取对称密钥的过程：
+中间人在收到服务器发送给客户端的公钥（这里是“正确的公钥”）后，并没有发给客户端，而是中间人将自己的公钥（这里中间人也会有一对公钥和私钥，这里称呼为“伪造公钥”）发给客户端。之后，客户端把对称密钥用这个“伪造公钥”加密后，发送过程中经过了中间人，中间人就可以用自己的私钥解密数据并拿到对称密钥，此时中间人再把对称密钥用“正确的公钥”加密发回给服务器。此时，客户端、中间人、服务器都拥有了一样的对称密钥，后续客户端和服务器的所有加密数据，中间人都可以通过对称密钥解密出来。
+中间人获取对称密钥的过程如下：
+&lt;img src=&#34;https://cdn.nlark.com/yuque/0/2019/png/273282/1558028325349-5f1f4847-9642-4505-a9df-220ed2408b0a.png#align=left&amp;amp;display=inline&amp;amp;height=490&amp;amp;name=image.png&amp;amp;originHeight=490&amp;amp;originWidth=1189&amp;amp;size=260701&amp;amp;status=done&amp;amp;width=1189&#34; alt=&#34;image.png&#34;&gt;
+为了解决此问题，我们引入了数字证书的概念。服务器首先生成公私钥，&lt;strong&gt;将公钥提供给相关机构（CA）&lt;/strong&gt;，CA将公钥放入数字证书并将数字证书颁布给服务器，此时服务器就不是简单的把公钥给客户端，而是给客户端一个数字证书，数字证书中加入了一些&lt;strong&gt;数字签名的机制&lt;/strong&gt;，保证了数字证书一定是服务器给客户端的。中间人发送的伪造证书，不能够获得CA的认证，此时，客户端和服务器就知道通信被劫持了。加入了CA数字签名认证的SSL会话过程如下所示：&lt;/p&gt;
+&lt;h3 id=&#34;ssl协议过程&#34;&gt;SSL协议过程&lt;/h3&gt;
+&lt;p&gt;握手阶段分成五步。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;第一步，客户端给出协议版本号、一个客户端生成的随机数（Client random），以及客户端支持的加密方法。&lt;/li&gt;
+&lt;li&gt;第二步，服务端确认双方使用的加密方法，并给出数字证书、以及一个服务器生成的随机数（Server random）。&lt;/li&gt;
+&lt;li&gt;第三步，客户端确认数字证书有效，然后生成一个新的随机数（Premaster secret），并使用数字证书中的公钥，加密这个随机数，发给服务端。&lt;/li&gt;
+&lt;li&gt;第四步，服务端使用自己的私钥，获取客户端发来的随机数（即Premaster secret）。&lt;/li&gt;
+&lt;li&gt;第五步，客户端和服务端根据约定的加密方法，使用前面的三个随机数，生成&amp;quot;对话密钥&amp;quot;（session key），用来加密接下来的整个对话过程。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;上述通信过程，可以简化成以下交互图：
+&lt;img src=&#34;https://cdn.nlark.com/yuque/0/2019/png/273282/1558018962218-61afa4fd-b4d9-498c-956b-2bb81f56d39e.png#align=left&amp;amp;display=inline&amp;amp;height=206&amp;amp;name=image.png&amp;amp;originHeight=275&amp;amp;originWidth=631&amp;amp;size=43854&amp;amp;status=done&amp;amp;width=473&#34; alt=&#34;image.png&#34;&gt;&lt;/p&gt;
+&lt;h2 id=&#34;服务器处理请求&#34;&gt;服务器处理请求&lt;/h2&gt;
+&lt;h3 id=&#34;正向代理&#34;&gt;正向代理&lt;/h3&gt;
+&lt;p&gt;正向代理是一个位于客户端【用户A】和原始服务器【服务器B】之间的服务器【代理服务器Z】，为了从原始服务器取得内容，用户A向代理服务器Z发送一个请求并指定目标(服务器B)，然后代理服务器Z向服务器B转交请求并将获得的内容返回给客户端。客户端必须要进行一些特别的设置才能使用正向代理。如下图：
+&lt;img src=&#34;https://cdn.nlark.com/yuque/0/2019/png/273282/1558028719459-26d446da-a700-49ce-9483-ebe5baf8f17c.png#align=left&amp;amp;display=inline&amp;amp;height=190&amp;amp;name=image.png&amp;amp;originHeight=380&amp;amp;originWidth=792&amp;amp;size=195293&amp;amp;status=done&amp;amp;width=396&#34; alt=&#34;image.png&#34;&gt;
+正向代理的作用有以下几点：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;访问本无法访问的服务器B，如FQ，通过代理服务器就能进行访问&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;img src=&#34;https://cdn.nlark.com/yuque/0/2019/png/273282/1558028848287-016bda7f-d81a-4235-81e0-1baf55237612.png#align=left&amp;amp;display=inline&amp;amp;height=195&amp;amp;name=image.png&amp;amp;originHeight=389&amp;amp;originWidth=693&amp;amp;size=172530&amp;amp;status=done&amp;amp;width=347&#34; alt=&#34;image.png&#34;&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;加速访问服务器，如游戏加速器&lt;/li&gt;
+&lt;li&gt;Cache作用。如果在用户A访问服务器B某数据J之前，已经有人通过代理服务器Z访问过服务器B上得数据J，那么代理服务器Z会把数据J保存一段时间，如果有人正好取该数据J，那么代理服务器Z不再访问服务器B，而把缓存的数据J直接发给用户A。这一技术在Cache中术语就叫Cache命中。如果有更多的像用户A的用户来访问代理服务器Z，那么这些用户都可以直接从代理服务器Z中取得数据J，而不用千里迢迢的去服务器B下载数据了。&lt;/li&gt;
+&lt;li&gt;客户端访问授权。这方面的内容现今使用的还是比较多的，例如一些公司采用ISA SERVER做为正向代理服务器来授权用户是否有权限访问互联网，如下图：&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;img src=&#34;https://cdn.nlark.com/yuque/0/2019/png/273282/1558029062293-a7db2e2e-25a4-40d3-9477-b90c7df376fe.png#align=left&amp;amp;display=inline&amp;amp;height=192&amp;amp;name=image.png&amp;amp;originHeight=384&amp;amp;originWidth=684&amp;amp;size=209913&amp;amp;status=done&amp;amp;width=342&#34; alt=&#34;image.png&#34;&gt;
+假设用户A和用户B都设置了代理服务器，用户A允许访问互联网，而用户B不允许访问互联网（这个在代理服务器Z上做限制）这样用户A因为授权，可以通过代理服务器访问到服务器B，而用户B因为没有被代理服务器Z授权，所以访问服务器B时，数据包会被直接丢弃。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;隐藏访问者的行踪。如下图我们可以看出服务器B并不知道访问自己的实际是用户A，因为代理服务器Z代替用户A去直接与服务器B进行交互。如果代理服务器Z被用户A完全控制（或不完全控制），会惯以“肉鸡”术语称呼。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;img src=&#34;https://cdn.nlark.com/yuque/0/2019/png/273282/1558029133425-e41bb340-c484-420c-8bc4-3e6191d0e345.png#align=left&amp;amp;display=inline&amp;amp;height=134&amp;amp;name=image.png&amp;amp;originHeight=268&amp;amp;originWidth=715&amp;amp;size=122798&amp;amp;status=done&amp;amp;width=358&#34; alt=&#34;image.png&#34;&gt;&lt;/p&gt;
+&lt;h3 id=&#34;反向代理&#34;&gt;反向代理&lt;/h3&gt;
+&lt;p&gt;反向代理正好与正向代理相反，对于客户端而言代理服务器就像是原始服务器，并且客户端不需要进行任何特别的设置。客户端向反向代理的命名空间中的内容发送普通请求，接着反向代理将判断向何处(原始服务器)转交请求，并将获得的内容返回给客户端。
+反向代理服务器的作用如下：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;保护和隐藏原始资源服务器。如下图所示，用户A始终认为它访问的是原始服务器B而不是代理服务器Z，但实用际上反向代理服务器接受用户A的应答，从原始资源服务器B中取得用户A的需求资源，然后发送给用户A。由于防火墙的作用，只允许代理服务器Z访问原始资源服务器B。尽管在这个虚拟的环境下，防火墙和反向代理的共同作用保护了原始资源服务器B，但用户A并不知情。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;img src=&#34;https://cdn.nlark.com/yuque/0/2019/png/273282/1558029278066-a3670886-5d42-4b6f-89ee-abe33f3cb870.png#align=left&amp;amp;display=inline&amp;amp;height=138&amp;amp;name=image.png&amp;amp;originHeight=275&amp;amp;originWidth=675&amp;amp;size=133559&amp;amp;status=done&amp;amp;width=338&#34; alt=&#34;image.png&#34;&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;负载均衡。如下图所示，当反向代理服务器不止一个的时候，我们甚至可以把它们做成集群，当更多的用户访问资源服务器B的时候，让不同的代理服务器Z（x）去应答不同的用户，然后发送不同用户需要的资源。当然反向代理服务器像正向代理服务器一样拥有CACHE的作用，它可以缓存原始资源服务器B的资源，而不是每次都要向原始资源服务器B请求数据，特别是一些静态的数据，比如图片和文件，如果这些反向代理服务器能够做到和用户X来自同一个网络，那么用户X访问反向代理服务器X，就会得到很高质量的速度。这正是CDN技术的核心。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;img src=&#34;https://cdn.nlark.com/yuque/0/2019/png/273282/1558029366280-7ccf94d2-74ea-44a5-8b1b-a638fec080ef.png#align=left&amp;amp;display=inline&amp;amp;height=187&amp;amp;name=image.png&amp;amp;originHeight=374&amp;amp;originWidth=745&amp;amp;size=155191&amp;amp;status=done&amp;amp;width=373&#34; alt=&#34;image.png&#34;&gt;
+&lt;strong&gt;正向代理代理的对象是客户端，反向代理代理的对象是服务端。&lt;/strong&gt;&lt;/p&gt;
+&lt;h2 id=&#34;浏览器解析渲染页面&#34;&gt;浏览器解析渲染页面&lt;/h2&gt;
+&lt;p&gt;基本过程：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;HTML解析出DOM Tree&lt;/li&gt;
+&lt;li&gt;CSS解析出Style Rules&lt;/li&gt;
+&lt;li&gt;将二者关联生成Render Tree&lt;/li&gt;
+&lt;li&gt;Layout 根据Render Tree计算每个节点的信息&lt;/li&gt;
+&lt;li&gt;Painting 根据计算好的信息绘制整个页面&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;先看一下浏览器解析渲染其他的相关知识。&lt;/p&gt;
+&lt;h3 id=&#34;文档模式&#34;&gt;文档模式&lt;/h3&gt;
+&lt;h4 id=&#34;什么是文档模式&#34;&gt;什么是文档模式&lt;/h4&gt;
+&lt;p&gt;现在虽然没怎么用使用IE5.5了，但它却从未离开过我们，因为IE5.5一直以怪异模式（Quirks，IE5的文档模式）的形式存活在我们的身边。不过在那个只有IE5.5的年代，并没有Quirks这一说法，只是后来IE6面世后逐渐向W3C标准靠拢，而IE5.5下DOM树的解析、渲染等都与W3C标准有很大差别，于是命其名为Quirks。
+由于IE6和IE5.5下DOM树的解析等都有很大差异，导致那些适配IE5.5的老网站无法在IE6上正常显示，于是出现了一个新功能——“兼容模式”，用于解决老网站的显示问题。IE6的兼容模式就两种，怪异模式（Quirks）和IE6标准模式。&lt;/p&gt;
+&lt;h4 id=&#34;文档模式的种类&#34;&gt;文档模式的种类&lt;/h4&gt;
+&lt;p&gt;目前文档模式有三种：混杂模式（quirks mode）、标准模式（standards mode）和准标准模式。对于准标准模式，一般又是通过过渡型（transitional）和框架集型（frameset）来触发。
+准标准模式下很对特性都会按照浏览器标准去解析（当然，不是所有），文档开始处如果没有发现文档类型声明，则默认是混杂模式。混杂模式不值得推荐，目前大部分网站用的都是标准模式。&lt;/p&gt;
+&lt;h3 id=&#34;async和defer&#34;&gt;async和defer&lt;/h3&gt;
+&lt;p&gt;当浏览器碰到 script 脚本的时候：
+1.&lt;code&gt;&amp;lt;script src=&amp;quot;script.js&amp;quot;&amp;gt;&amp;lt;/script&amp;gt;&lt;/code&gt;
+没有 defer 或 async，浏览器会立即加载并执行指定的脚本，“立即”指的是在渲染该 script 标签之下的文档元素之前，也就是说不等待后续载入的文档元素，读到就加载并执行。
+2.&lt;code&gt;&amp;lt;script async src=&amp;quot;script.js&amp;quot;&amp;gt;&amp;lt;/script&amp;gt;&lt;/code&gt;
+有 async，加载和渲染后续文档元素的过程将和 script.js 的加载与执行并行进行（异步）。
+3.&lt;code&gt;&amp;lt;script defer src=&amp;quot;myscript.js&amp;quot;&amp;gt;&amp;lt;/script&amp;gt;&lt;/code&gt;
+有 defer，加载后续文档元素的过程将和 script.js 的加载并行进行（异步），但是 script.js 的执行要在所有元素解析完成之后，DOMContentLoaded 事件触发之前完成。
+然后从实用角度来说呢，首先把所有脚本都丢到 &lt;/body&gt; 之前是最佳实践，因为对于旧浏览器来说这是唯一的优化选择，此法可保证非脚本的其他一切元素能够以最快的速度得到加载和解析。
+接着，我们来看一张图：
+&lt;img src=&#34;https://cdn.nlark.com/yuque/0/2019/jpeg/273282/1558280714742-9d4a0402-5575-4604-a348-8e8f2c57e5bd.jpeg#align=left&amp;amp;display=inline&amp;amp;height=112&amp;amp;originHeight=112&amp;amp;originWidth=689&amp;amp;size=0&amp;amp;status=done&amp;amp;width=689&#34; alt=&#34;&#34;&gt;
+蓝色线代表网络读取，红色线代表执行时间，这俩都是针对脚本的；绿色线代表 HTML 解析。&lt;/p&gt;
+&lt;h3 id=&#34;html解析&#34;&gt;HTML解析&lt;/h3&gt;
+&lt;p&gt;HTML Parser的任务是将HTML标记解析成DOM Tree。一段HTML如下：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt; 1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 6
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 7
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 8
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 9
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;10
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;11
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-html&#34; data-lang=&#34;html&#34;&gt;&lt;span class=&#34;p&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;html&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;&amp;gt;&lt;/span&gt;
+&lt;span class=&#34;p&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;head&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;&amp;gt;&lt;/span&gt;
+    &lt;span class=&#34;p&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;title&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;&amp;gt;&lt;/span&gt;Web page parsing&lt;span class=&#34;p&#34;&gt;&amp;lt;/&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;title&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;&amp;gt;&lt;/span&gt;
+&lt;span class=&#34;p&#34;&gt;&amp;lt;/&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;head&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;&amp;gt;&lt;/span&gt;
+&lt;span class=&#34;p&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;body&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;&amp;gt;&lt;/span&gt;
+    &lt;span class=&#34;p&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;div&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;&amp;gt;&lt;/span&gt;
+        &lt;span class=&#34;p&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;h1&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;&amp;gt;&lt;/span&gt;Web page parsing&lt;span class=&#34;p&#34;&gt;&amp;lt;/&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;h1&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;&amp;gt;&lt;/span&gt;
+        &lt;span class=&#34;p&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;p&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;&amp;gt;&lt;/span&gt;This is an example Web page.&lt;span class=&#34;p&#34;&gt;&amp;lt;/&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;p&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;&amp;gt;&lt;/span&gt;
+    &lt;span class=&#34;p&#34;&gt;&amp;lt;/&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;div&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;&amp;gt;&lt;/span&gt;
+&lt;span class=&#34;p&#34;&gt;&amp;lt;/&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;body&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;&amp;gt;&lt;/span&gt;
+&lt;span class=&#34;p&#34;&gt;&amp;lt;/&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;html&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;&amp;gt;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;经过解析之后的DOM Tree差不多就是：
+&lt;img src=&#34;https://cdn.nlark.com/yuque/0/2019/png/273282/1558279192362-446bdb9e-86c8-4b2f-abe9-fb6d2c2bdb7e.png#align=left&amp;amp;display=inline&amp;amp;height=213&amp;amp;name=image.png&amp;amp;originHeight=426&amp;amp;originWidth=652&amp;amp;size=211293&amp;amp;status=done&amp;amp;width=326&#34; alt=&#34;image.png&#34;&gt;
+将文本的HTML文档，提炼出关键信息，嵌套层级的树形结构，便于计算拓展。这就是HTML Parser的作用。&lt;/p&gt;
+&lt;h3 id=&#34;css解析&#34;&gt;CSS解析&lt;/h3&gt;
+&lt;p&gt;CSS Parser将CSS解析成Style Rules，Style Rules也叫CSSOM（CSS Object Model）。StyleRules也是一个树形结构，根据CSS文件整理出来的类似DOM Tree的树形结构：
+&lt;img src=&#34;https://cdn.nlark.com/yuque/0/2019/png/273282/1558279244904-a9ca8b6a-e9b4-46b1-bdb3-db1c73882bee.png#align=left&amp;amp;display=inline&amp;amp;height=295&amp;amp;originHeight=393&amp;amp;originWidth=500&amp;amp;size=0&amp;amp;status=done&amp;amp;width=375&#34; alt=&#34;&#34;&gt;
+与HTML Parser相似，CSS Parser作用就是将很多个CSS文件中的样式合并解析出具有树形结构Style Rules。&lt;/p&gt;
+&lt;h3 id=&#34;脚本处理&#34;&gt;脚本处理&lt;/h3&gt;
+&lt;p&gt;浏览器解析文档，当遇到&lt;script&gt;标签的时候，会立即解析脚本，停止解析文档（因为JS可能会改动DOM和CSS，所以继续解析会造成浪费）。
+如果脚本是外部的，会等待脚本下载完毕，再继续解析文档。可以在script标签上增加属性 defer或者async。
+脚本解析会将脚本中改变DOM和CSS的地方分别解析出来，追加到DOM Tree和Style Rules上。&lt;/p&gt;
+&lt;h3 id=&#34;呈现树render-tree&#34;&gt;呈现树（Render Tree）&lt;/h3&gt;
+&lt;p&gt;Render Tree的构建其实就是DOM Tree和CSSOM Attach的过程。
+呈现器是和 DOM 元素相对应的，但并非一一对应。Render Tree实际上就是一个计算好样式，与HTML对应的（包括哪些显示，那些不显示）的Tree。&lt;/p&gt;
+&lt;h3 id=&#34;布局layout&#34;&gt;布局Layout&lt;/h3&gt;
+&lt;p&gt;有了Render Tree，浏览器已经能知道网页中有哪些节点、各个节点的CSS定义以及他们的从属关系，从而去计算出每个节点在屏幕中的位置。&lt;/p&gt;
+&lt;h3 id=&#34;painting&#34;&gt;Painting&lt;/h3&gt;
+&lt;p&gt;在绘制阶段，系统会遍历呈现树，并调用呈现器的“paint”方法，将呈现器的内容显示在屏幕上。绘制工作是使用用户界面基础组件完成的。&lt;/p&gt;
+&lt;h4 id=&#34;repaint重绘&#34;&gt;Repaint（重绘）&lt;/h4&gt;
+&lt;p&gt;当元素改变的时候，&lt;strong&gt;不影响元素在页面当中的位置&lt;/strong&gt;（比如 background-color, border-color, visibility），浏览器仅仅会应用新的样式重绘此元素，此过程称为 Repaint。&lt;/p&gt;
+&lt;h4 id=&#34;reflow回流&#34;&gt;Reflow（回流）&lt;/h4&gt;
+&lt;p&gt;当浏览器发现先来试个一句话解释仨，当浏览器碰到 script 脚本的时候：&lt;/p&gt;
+&lt;script src=&#34;script.js&#34;&gt;&lt;/script&gt;
+&lt;p&gt;没有 defer 或 async，浏览器会立即加载并执行指定的脚本，“立即”指的是在渲染该 script 标签之下的文档元素之前，也就是说不等待后续载入的文档元素，读到就加载并执行。&lt;/p&gt;
+&lt;script async src=&#34;script.js&#34;&gt;&lt;/script&gt;
+&lt;p&gt;有 async，加载和渲染后续文档元素的过程将和 script.js 的加载与执行并行进行（异步）。&lt;/p&gt;
+&lt;script defer src=&#34;myscript.js&#34;&gt;&lt;/script&gt;
+&lt;p&gt;有 defer，加载后续文档元素的过程将和 script.js 的加载并行进行（异步），但是 script.js 的执行要在所有元素解析完成之后，DOMContentLoaded 事件触发之前完成。
+然后从实用角度来说呢，首先把所有脚本都丢到 &lt;/body&gt; 之前是最佳实践，因为对于旧浏览器来说这是唯一的优化选择，此法可保证非脚本的其他一切元素能够以最快的速度得到加载和解析。
+接着，我们来看一张图咯：，需要倒回去重新渲染，这个回退的过程叫 reflow。reflow 会从 &lt;html&gt; 这个 root frame 开始递归往下，依次计算所有的结点几何尺寸和位置。reflow 几乎是无法避免的。现在界面上流行的一些效果，比如树状目录的折叠、展开（实质上是元素的显 示与隐藏）等，都将引起浏览器的 reflow。鼠标滑过、点击等只要这些行为引起了页面上某些元素的占位面积、定位方式、边距等属性的变化，都会引起它内部、周围甚至整个页面的重新渲染。通常我们都无法预估浏览器到底会 reflow 哪一部分的代码，它们都彼此相互影响着。&lt;/p&gt;
+&lt;h4 id=&#34;重绘和回流&#34;&gt;重绘和回流&lt;/h4&gt;
+&lt;p&gt;Reflow 的成本比 Repaint 的成本高得多的多。一个结点的 Reflow 很有可能导致子结点，甚至父点以及同级结点的 Reflow 。在一些高性能的电脑上也许还没什么，但是如果 Reflow 发生在手机上，那么这个过程是延慢加载和耗电的。下面这些动作有很大可能会是成本比较高的：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;当你增加、删除、修改DOM结点时，会导致Reflow或Repaint&lt;/li&gt;
+&lt;li&gt;当你移动DOM的位置，或是搞个动画的时候。&lt;/li&gt;
+&lt;li&gt;当你修改CSS样式的时候。&lt;/li&gt;
+&lt;li&gt;当你Resize窗口的时候（移动端没有这个问题），或是滚动的时候。&lt;/li&gt;
+&lt;li&gt;当你修改网页的默认字体时。&lt;/li&gt;
+&lt;li&gt;注：display:none会触发reflow，而visibility:hidden只会触发repaint，因为没有发现位置变化。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;web优化&#34;&gt;Web优化&lt;/h2&gt;
+&lt;p&gt;从耗时的角度，浏览器请求、加载、渲染一个页面，时间花在下面五件事情上：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;DNS 查询&lt;/li&gt;
+&lt;li&gt;TCP 连接&lt;/li&gt;
+&lt;li&gt;HTTP 请求即响应&lt;/li&gt;
+&lt;li&gt;服务器响应&lt;/li&gt;
+&lt;li&gt;客户端渲染&lt;/li&gt;
+&lt;/ol&gt;
+</content>
+            
+            
+            
+            
+            
+                
+                    
+                
+                    
+                
+            
+        </entry>
+    
         <entry>
             <title type="text">Hello World</title>
             <link rel="alternate" type="text/html" href="https://example.com/posts/hello-world/" />
