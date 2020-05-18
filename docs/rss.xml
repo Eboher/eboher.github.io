@@ -23,10 +23,58 @@
         
             <copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright>
         
-        <lastBuildDate>Mon, 18 May 2020 14:48:40 &#43;0800</lastBuildDate>
+        <lastBuildDate>Mon, 18 May 2020 16:00:32 &#43;0800</lastBuildDate>
         
             <atom:link rel="self" type="application/rss&#43;xml" href="https://example.com/rss.xml" />
         
+        
+            <item>
+                <title>Hello World</title>
+                <link>https://example.com/posts/hello-world/</link>
+                <guid isPermaLink="true">https://example.com/posts/hello-world/</guid>
+                <pubDate>Mon, 18 May 2020 14:34:37 &#43;0800</pubDate>
+                
+                    <author>reuixiy@gmail.com (reuixiy)</author>
+                
+                <copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright>
+                
+                    <description></description>
+                
+                
+                
+                
+                
+                    
+                        
+                    
+                        
+                    
+                
+            </item>
+        
+            <item>
+                <title>First</title>
+                <link>https://example.com/posts/first/</link>
+                <guid isPermaLink="true">https://example.com/posts/first/</guid>
+                <pubDate>Mon, 18 May 2020 13:44:48 &#43;0800</pubDate>
+                
+                    <author>reuixiy@gmail.com (reuixiy)</author>
+                
+                <copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright>
+                
+                    <description></description>
+                
+                
+                
+                
+                
+                    
+                        
+                    
+                        
+                    
+                
+            </item>
         
     </channel>
 </rss>
