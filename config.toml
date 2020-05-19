@@ -183,14 +183,9 @@ uglyURLs = false
     #     pre = "internal"
     #     post = "home"
     [[menu.main]]
-        url = "/tech/"
-        name = "技术"
+        url = "/write/"
+        name = "写写字"
         weight = 2
-        pre = "internal"
-    [[menu.main]]
-        url = "/life/"
-        name = "生活"
-        weight = 3
         pre = "internal"
     #[[menu.main]]
     #    url = "/about/"
@@ -229,7 +224,7 @@ uglyURLs = false
     # 说明：居中布局（center）或弹性布局（flex）
 
     # 顶栏宽度的回退值
-    headerFallbackWidth = "72em"
+    headerFallbackWidth = "36em"
     # 说明：默认情况，MemE 使用 main-inner 元素
     #      的宽度作为顶栏宽度，但是在一些页面（比
     #      如「诗意人生」和「视频片段」布局的首页），
@@ -239,7 +234,7 @@ uglyURLs = false
     # 在窄视图下隐藏菜单栏并显示一个按钮？
     enableNavToggle = true
 
-    navHeight = "10em"
+    navHeight = "2em"
     # 说明：菜单栏展开时的高度
 
 
@@ -291,7 +286,7 @@ uglyURLs = false
 
     ## 「诗意人生」
     # 诗句，支持 Markdown
-    homePoetry = ["这世上的光","总会照亮每一个地方","而那些靠梦想养活自己的人","是独自穿越黑暗的光"]
+    homePoetry = ["![avatar](https://img1.doubanio.com/view/photo/l/public/p2578519147.webp)","吾之所失","亦是吾之所在"]
     # 底部链接的内间距，单位：em
     homeLinksPadding = 1
 
@@ -387,7 +382,7 @@ uglyURLs = false
     # 列表页面
 
     # 宽度
-    listWidth = 72
+    listWidth = 36
     # 说明：如果留空（""），则用 42 作为默认值
     #      单位：em
 
@@ -651,7 +646,7 @@ uglyURLs = false
     # 注意：只支持 HSL 颜色值
 
     # 文章的内容宽度
-    postWidth = 72
+    postWidth = 36
     # 说明：如果留空（""），则用 42 作为默认值
     #      单位：em
 
@@ -860,9 +855,9 @@ uglyURLs = false
     #      SVG，则可留空（""）品牌栏字体。
 
     # 品牌栏
-    fontFamilySiteBrand = ""
+    fontFamilySiteBrand = "'GeosansLight'"
     # 菜单栏
-    fontFamilyMenu = ""
+    fontFamilyMenu = "bold"
     # 文章标题、文章副标题、列表标题、列表的年份和月份标题、相关文章标题、文章上下篇标题、表格的表头、定义列表中的术语
     fontFamilyTitle = "'Noto Serif SC', 'EB Garamond', serif"
     # 分节标题、目录标题
@@ -891,7 +886,7 @@ uglyURLs = false
     ######################################
     ## 字号（单位：px）
 
-    fontSize = 16
+    fontSize = 20
 
     ######################################
     ## 制表符的宽度
