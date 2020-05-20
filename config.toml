@@ -1153,9 +1153,9 @@ uglyURLs = false
     displaySiteCreatedYear = true
 
     # 年份与作者之间的图标，留空（""）则无
-    iconBetweenYearAndAuthor = "tui"
+    iconBetweenYearAndAuthor = "switch"
     # 图标颜色
-    iconColor = "#000000"
+    iconColor = "#E60012"
     # 是否开启图标的跳动效果
     iconAnimation = false
 
